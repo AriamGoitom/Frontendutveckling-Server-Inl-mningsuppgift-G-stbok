@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Gästbok</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Länk till Bootstrap CSS -->
+  <link rel="stylesheet" href="style.css"> <!-- Länkar till en stylesheet (style.css) för att ytterligare anpassa stilen -->
+</head>
+<body>
+  <div class="container">
+    <h1>Gästbok</h1> <!-- Rubrik för sidan -->
+
+    <!-- Formulär för att lägga till nya inlägg -->
+    <div class="row">
+      <div class="col-md-6">
+        <form action="/posts" method="post">
+          <div class="form-group">
+            <label for="name">Namn:</label>
+            <input type="text" class="form-control" id="name" name="name">
+          </div>
+          <div class="form-group">
+            <label for="email">E-post:</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="homepage">Homepage:</label>
+            <input type="text" class="form-control" id="homepage" name="homepage">
+          </div>
+          <div class="form-group">
+            <label for="tel">Telefon:</label>
+            <input type="tel" class="form-control" id="tel" name="tel">
+          </div>
+          <div class="form-group">
+            <label for="comment">Kommentar:</label>
+            <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Skicka</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Plats där gästboksinläggen kommer att visas -->
+    <div id="guestbookEntries">
+      <!-- Här kommer inläggen att visas dynamiskt -->
+    </div>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Länk till Bootstrap JS -->
+</body>
+</html>
+
