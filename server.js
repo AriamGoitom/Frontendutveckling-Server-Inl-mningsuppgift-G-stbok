@@ -13,7 +13,7 @@ app.set("view engine", "ejs");                              // Sätter EJS som v
 // Läs befintlig data från users.json om filen finns
 let users = [];
 try {
-  const userData = fs.readFileSync("newpost.json", "utf8");     // Läser data från "newpost.json"
+  const userData = fs.readFileSync("newpost.json", "utf8");  // Läser data från "newpost.json"
   if (userData) {
     users = JSON.parse(userData);                            // Om filen innehåller data tolkas det som JSON och lagras i users-variabeln
   }
@@ -26,7 +26,7 @@ let posts = [];
 try {
   const postData = fs.readFileSync("newpost.json", "utf8");  // Läser data från "newpost.json"
   if (postData) {
-    posts = JSON.parse(postData);           // Om filen innehåller data tolkas det som JSON och lagras i posts-variabeln                      
+    posts = JSON.parse(postData);                             // Om filen innehåller data tolkas det som JSON och lagras i posts-variabeln                      
   }
 } catch (err) {
   console.error("Fel vid läsning av gästboksfilen:", err);    // Felhantering vid läsning av filen
@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
       for (let i = 0; i < postsData.length; i++) {            // Loopar igenom inläggen
         output += `<p><b>${postsData[i].name}</b> från ${
           postsData[i].homepage || "ingen hemsida"
-        } skriver: <br><i>${postsData[i].comment}</i></p><hr>`    // Genererar HTML för varje inlägg
+        } skriver: <br><i>${postsData[i].comment}</i></p><hr>`  // Genererar HTML för varje inlägg
         ;
       }
     }
@@ -61,45 +61,45 @@ app.get("/", (req, res) => {
 
 // Route för att hantera POST-förfrågningar för användare
 app.post("/submit", (req, res) => {
-  const { Name, Email, Homepage, Tel, Comment } = req.body;                             // Hämtar data från formuläret
-  users.push({ Name, Email, Homepage, Tel, Comment });                                  // Lägger till användardata i users
+  const { Name, Email, Homepage, Tel, Comment } = req.body;               // Hämtar data från formuläret
+  users.push({ Name, Email, Homepage, Tel, Comment });                    // Lägger till användardata i users
 
   console.log(req.bodys)                                                  
-  fs.writeFile("newpost.json", JSON.stringify(users), (err) => {                        // Sparar användardata till "newpost.json"
+  fs.writeFile("newpost.json", JSON.stringify(users), (err) => {          // Sparar användardata till "newpost.json"
 
     if (err) {
-      console.error("Fel vid skrivning till users-filen:", err);                        // Felhantering vid skrivning av filen
+      console.error("Fel vid skrivning till users-filen:", err);          // Felhantering vid skrivning av filen
       return res.status(500).send("Serverfel");
     }
-    res.redirect("/");                                                                  // Omdirigerar till startsidan
+    res.redirect("/");                                                    // Omdirigerar till startsidan
   });
 });
 
 // Route för att hantera POST-förfrågningar för gästboksinlägg
 app.post("/posts", (req, res) => {
-  const { name, email, homepage, tel, comment } = req.body;                             // Hämtar data från formuläret för gästboksinlägg
-  const newPost = { name, email, homepage, tel, comment };                              // Skapar ett nytt gästboksinlägg
-  posts.push(newPost);                                                                  // Lägger till det nya inlägget i posts
+  const { name, email, homepage, tel, comment } = req.body;                // Hämtar data från formuläret för gästboksinlägg
+  const newPost = { name, email, homepage, tel, comment };                 // Skapar ett nytt gästboksinlägg
+  posts.push(newPost);                                                     // Lägger till det nya inlägget i posts
 
-  fs.writeFile("newpost.json", JSON.stringify(posts), (err) => {                        // Sparar gästboksinlägget till "newpost.json"
+  fs.writeFile("newpost.json", JSON.stringify(posts), (err) => {           // Sparar gästboksinlägget till "newpost.json"
     if (err) {
-      console.error("Fel vid skrivning till gästboksfilen:", err);                      // Felhantering vid skrivning av filen
+      console.error("Fel vid skrivning till gästboksfilen:", err);         // Felhantering vid skrivning av filen
       return res.status(500).send("Serverfel");
     }
-    res.redirect("/");                                                                  // Omdirigerar till startsidan
+    res.redirect("/");                                                     // Omdirigerar till startsidan
   });
 });
 
 // Starta servern på port 3000
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Servern lyssnar på port ${PORT}`);                                       // Skriver ut ett meddelande när servern startar
+  console.log(`Servern lyssnar på port ${PORT}`);                          // Skriver ut ett meddelande när servern startar
 });
 
 
 
-// Denna ruta ersätter första GET-routen med att skicka login.html som respons
 // Nivå 2
+// Denna ruta ersätter första GET-routen med att skicka login.html som respons
 app.get("/", function (req, res) {
   res.sendFile(__dirname + "/login.html");
 });

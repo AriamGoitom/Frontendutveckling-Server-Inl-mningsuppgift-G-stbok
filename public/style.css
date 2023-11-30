@@ -1,6 +1,8 @@
+/* CSS-styling för body */
 body {
     background: #efa188;
 }
+/* Css-styling för button */
 .btn-primary {
     background: rgb(213, 123, 12);
     border-color: burlywood;
@@ -10,7 +12,6 @@ body {
     margin-top: 5%;
     cursor: pointer;
 }
-
 /* För att förhindra färgändring vid hover och klick */
 .btn:focus, 
 .btn:hover {
@@ -19,13 +20,7 @@ body {
   border-color: inherit !important;
   box-shadow: none !important;
 }
-
-
-
-
-  
-    
-  
+/* Css-styling för h1 */
 h1 {
     color: whitesmoke;
     font-family: "Lobster";
